@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataAccessLayer\" />
+    <Compile Remove="DataAccessLayer\**" />
+    <EmbeddedResource Remove="DataAccessLayer\**" />
+    <None Remove="DataAccessLayer\**" />
+    <Page Remove="DataAccessLayer\**" />
   </ItemGroup>
 
 </Project>
