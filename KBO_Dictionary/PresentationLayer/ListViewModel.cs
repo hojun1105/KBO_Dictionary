@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace KBO_Dictionary.PresentationLayer
 {
-    internal class ListViewModel
+    public class ListViewModel
     {
+        public ListViewModel()
+        {
+        }
+
+        public List<CardViewModel> Cards { get; set; }
     }
 }
