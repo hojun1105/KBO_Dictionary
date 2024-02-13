@@ -8,7 +8,9 @@
         Title="ListView" Height="450" Width="800">
     <Grid>
         <ScrollViewer>
-           
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <local:CardView/>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>
