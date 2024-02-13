@@ -6,7 +6,4 @@ using System.Threading.Tasks;
 
 namespace KBO_Dictionary.EntityLayer
 {
-    internal class TeamInformationEntity
-    {
-    }
 }
