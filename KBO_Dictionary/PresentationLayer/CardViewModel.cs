@@ -13,7 +13,7 @@ namespace KBO_Dictionary.PresentationLayer
         {
         }
 
-        public PlayerStatModel PlayerStat { get; set; }
+        public PlayerModel PlayerModel { get; set; }
     }
 }
 
