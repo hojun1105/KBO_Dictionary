@@ -13,22 +13,20 @@ public class KboDbContext : DbContext
     private const string DbName = "postgres";
     private const string Password = "991105";
     private const string Port = "5432";
-    public DbSet<PlayerInformationEntity> PlayerInformation { get; set; }
+    public DbSet<PlayerInformationEntity>? PlayerInformation { get; set; }
+    public DbSet<StatInformationEntity>? StatInformation { get; set; }
+    public DbSet<TeamInformationEntity>? TeamInformation { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<PlayerInformationEntity>().ToTable("PLAYER_INFO", schema: "KBO");
+    }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql($"Host={Host}:{Port};Database={DbName};Username={User};Password={Password}");
+        optionsBuilder.UseNpgsql($"Server={Host};Port={Port};User Id={User};Password={Password};Database={DbName}");
+        base.OnConfiguring(optionsBuilder);
     }
 }
 
-public class PlayerStatRepository : IPlayerStatRepository
-{
-    public List<PlayerModel> SelectAllPlayerModels()
-    {
-        using (var context = new KboDbContext())
-        {
-            var playerInformationList = context.PlayerInformation.ToList();
-            //todo : statinfo, teaminfo 다 가져와서 join후 PlayerModel로 변환후 return 
-        }
-    }
-}
+
