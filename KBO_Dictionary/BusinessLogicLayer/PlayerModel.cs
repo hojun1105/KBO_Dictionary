@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 namespace KBO_Dictionary.BusinessLogicLayer
 {
-    public sealed class PlayerModel
+    public struct PlayerModel
     {
-        private int id { get; set; }
-        private string name { get; set; }
-        private string team { get; set; }
-        private double height { get; set; }
-        private double width { get; set; }
-        private DateTime birth_date { get; set; }
-        private double 타율 { get; set; }
-        private int 경기수 { get; set; }
-        private int 득점 { get; set; }
-        private int 안타 { get; set; }
-        private int 이루타 { get; set; }
-        private int 삼루타 { get; set; }
-        private int 홈런 { get; set; }
-        private int 타점 { get; set; }
-        private double 장타율 { get; set; }
-        private double 출루율 { get; set; }
-        private double ops { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string team { get; set; }
+        public double height { get; set; }
+        public double weight { get; set; }
+        public DateTime birth_date { get; set; }
+        public int 경기수 { get; set; }
+        public int 타석 { get; set; }
+        public double 타율 { get; set; }
+        public int 안타 { get; set; }
+        public int 이루타 { get; set; }
+        public int 삼루타 { get; set; }
+        public int 홈런 { get; set; }
+        public int 득점 { get; set; }
+        public int 타점 { get; set; }
+        public double 장타율 { get; set; }
+        public double 출루율 { get; set; }
+        public double ops { get; set; }
     }
 }
