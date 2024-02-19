@@ -91,7 +91,7 @@
                     <TextBlock Text="{Binding PlayerStat}"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="5">
-                    <TextBlock Text="no"/>
+                    <TextBlock Text="타석" />
                     <TextBlock Text="{Binding PlayerStat}"/>
                 </StackPanel>
             </Grid>

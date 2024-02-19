@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using KBO_Dictionary.PresentationLayer;
 
 namespace KBO_Dictionary
 {
@@ -13,5 +14,10 @@ namespace KBO_Dictionary
     /// </summary>
     public partial class App : Application
     {
+        private void App_OnStartup(object sender, StartupEventArgs e)
+        {
+            var view = new ListView { DataContext = new ListViewModel() };
+            view.Show();
+        }
     }
 }
