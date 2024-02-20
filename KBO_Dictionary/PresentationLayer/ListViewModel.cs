@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using KBO_Dictionary.BusinessLogicLayer;
 
 namespace KBO_Dictionary.PresentationLayer
 {
@@ -15,6 +16,7 @@ namespace KBO_Dictionary.PresentationLayer
             var s = new CardViewModel();
         }
 
+        public List<PlayerModel> PlayerModels { get; set; }
         public List<CardViewModel> Cards { get; set; }
     }
 }

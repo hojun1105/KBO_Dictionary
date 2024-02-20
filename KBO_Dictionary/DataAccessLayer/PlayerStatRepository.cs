@@ -54,9 +54,4 @@ namespace KBO_Dictionary.DataAccessLayer
             };
         }
     }
-
-    public record PlayerStatTeamEntity(
-        PlayerInformationEntity playerInfo,
-        StatInformationEntity statInfo,
-        TeamInformationEntity teamInfo);
 }
