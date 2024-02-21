@@ -19,7 +19,7 @@ public class KboDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<PlayerInformationDao>().ToTable("PLAYER_INFO", schema: "KBO");
+        modelBuilder.Entity<PlayerInformationEntity>().ToTable("PLAYER_INFO", schema: "KBO");
         modelBuilder.Entity<StatInformationEntity>().ToTable("STAT_INFO", schema: "KBO");
         modelBuilder.Entity<TeamInformationEntity>().ToTable("TEAM_INFO", schema: "KBO");
     }

@@ -7,7 +7,7 @@ using KBO_Dictionary.EntityLayer;
 
 namespace KBO_Dictionary.BusinessLogicLayer
 {
-    interface ITeamInformationDao
+    public interface ITeamInformationDao
     {
         void Insert(TeamInformationEntity entity);
         void Update(TeamInformationEntity entity);

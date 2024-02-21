@@ -11,20 +11,19 @@ namespace KBO_Dictionary.DataAccessLayer
 {
     public class PlayerStatRepository : IPlayerStatRepository
     {
+        public readonly KboDbContext _dbContext = new();
+
         public List<PlayerModel> SelectAllPlayerModels()
         {
-            using (var context = new KboDbContext())
+            if (_dbContext is not { PlayerInformation: not null, StatInformation: not null })
+                return new List<PlayerModel>();
             {
-                if (context is not { PlayerInformation: not null, StatInformation: not null })
-                    return new List<PlayerModel>();
-                {
-                    var playerInformationList = context.PlayerInformation.Join(context.StatInformation,
-                            playerInformation => playerInformation.Id, statInformation => statInformation.Id,
-                            (a, b) => new { playerInformation = a, statInformation = b })
-                        .Include(b => b.playerInformation.TeamInformation).ToList();
-                    return playerInformationList.Select(a => ToPlayerModel(a.playerInformation, a.statInformation))
-                        .ToList();
-                }
+                var playerInformationList = _dbContext.PlayerInformation.Join(_dbContext.StatInformation,
+                        playerInformation => playerInformation.Id, statInformation => statInformation.Id,
+                        (a, b) => new { playerInformation = a, statInformation = b })
+                    .Include(b => b.playerInformation.TeamInformation).ToList();
+                return playerInformationList.Select(a => ToPlayerModel(a.playerInformation, a.statInformation))
+                    .ToList();
             }
         }
 

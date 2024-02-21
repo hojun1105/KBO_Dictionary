@@ -29,7 +29,6 @@ namespace KBO_Dictionary.EntityLayer
         [Column("birth_date")]
         public DateTime BirthDate { get; set; }
 
-
         [Column("team_id")]
         public short TeamId { get; set; }
 

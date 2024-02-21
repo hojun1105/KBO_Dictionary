@@ -4,9 +4,11 @@ using System.Linq.Expressions;
 using System.Windows.Documents;
 using KBO_Dictionary.DataAccessLayer;
 
-namespace KBO_Dictionary.BusinessLogicLayer;
-
-public interface IPlayerStatRepository
+namespace KBO_Dictionary.BusinessLogicLayer
 {
-    public List<PlayerModel> SelectAllPlayerModels();
+    public interface IPlayerStatRepository
+    {
+        public List<PlayerModel> SelectAllPlayerModels();
+    }
 }
+

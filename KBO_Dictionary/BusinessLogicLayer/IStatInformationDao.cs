@@ -1,10 +1,11 @@
 ﻿using KBO_Dictionary.EntityLayer;
 
-namespace KBO_Dictionary.BusinessLogicLayer;
-
-public interface IStatInformationDao
+namespace KBO_Dictionary.BusinessLogicLayer
 {
-    void Insert(StatInformationEntity entity);
-    void Update(StatInformationEntity entity);
-    void Delete(StatInformationEntity entity);
+    public interface IStatInformationDao
+    {
+        void Insert(StatInformationEntity entity);
+        void Update(StatInformationEntity entity);
+        void Delete(StatInformationEntity entity);
+    }
 }
