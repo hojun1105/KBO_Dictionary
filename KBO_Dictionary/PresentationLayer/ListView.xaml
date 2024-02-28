@@ -4,12 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KBO_Dictionary"
+        xmlns:presentationLayer="clr-namespace:KBO_Dictionary.PresentationLayer"
         mc:Ignorable="d"
-        Title="ListView" Height="450" Width="800">
+        Title="KBO" Height="450" Width="800" d:DataContext="{d:DesignInstance presentationLayer:ListViewModel}">
     <Grid>
         <ScrollViewer>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <local:CardView/>
+            <StackPanel HorizontalAlignment="Center">
+                <ItemsControl ItemsSource="{Binding CardViews}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </StackPanel>
         </ScrollViewer>
     </Grid>

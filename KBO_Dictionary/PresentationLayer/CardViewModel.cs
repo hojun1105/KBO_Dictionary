@@ -10,13 +10,14 @@ namespace KBO_Dictionary.PresentationLayer
 {
     public class CardViewModel
     {
-        public CardViewModel()
+        public CardViewModel(PlayerModel playerModel)
         {
-            var playerStatRepository = new PlayerStatRepository();
-            var list = playerStatRepository.SelectAllPlayerModels();
+            PlayerModel = playerModel;
         }
 
         public PlayerModel PlayerModel { get; set; }
+
+        public double Value { get; set; } = 3.14;
     }
 }
 

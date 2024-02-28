@@ -7,8 +7,9 @@
              xmlns:presentationLayer="clr-namespace:KBO_Dictionary.PresentationLayer"
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="500"
+             Height="400" Width="400"
              d:DataContext="{d:DesignInstance presentationLayer:CardViewModel}"
-             d:Background="White">
+             d:Background="White" BorderBrush="Black " BorderThickness="1">
     <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -19,18 +20,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="정호준" Margin="0,0,0,204"
-                   Grid.RowSpan="2"/>
+        <Border Grid.Row="0">
+            <TextBlock Text="{Binding PlayerModel.Name}" />
+        </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding PlayerStat}"/>
-            <Image Grid.Column="1"/>
+            <TextBlock Grid.Column="0" Text="{Binding PlayerModel.Team}" />
+            <Image Grid.Column="1" />
+            <Image Grid.Column="2" Source="{Binding PlayerModel.TeamImage}"/>
         </Grid>
         <Border Grid.Row="2">
             <Grid>
@@ -48,51 +51,51 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <TextBlock Text="타율"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.타율, StringFormat=F3}" />
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <TextBlock Text="경기수"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.경기수}" />
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="2">
-                    <TextBlock Text="득점"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="타석" />
+                    <TextBlock Text="{Binding PlayerModel.타석}" />
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="3">
                     <TextBlock Text="안타"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.안타}" />
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="4">
                     <TextBlock Text="이루타"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.이루타}" />
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="5">
                     <TextBlock Text="삼루타"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.삼루타}" />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0">
                     <TextBlock Text="홈런"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.홈런}" />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <TextBlock Text="타점"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.타점}" />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="2">
                     <TextBlock Text="장타율"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.장타율, StringFormat=F3}" />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="3">
                     <TextBlock Text="출루율"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.출루율, StringFormat=F3}" />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="4">
                     <TextBlock Text="OPS"/>
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="{Binding PlayerModel.Ops, StringFormat=F3}" />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="5">
-                    <TextBlock Text="타석" />
-                    <TextBlock Text="{Binding PlayerStat}"/>
+                    <TextBlock Text="득점" />
+                    <TextBlock Text="{Binding PlayerModel.득점}" />
                 </StackPanel>
             </Grid>
         </Border>
