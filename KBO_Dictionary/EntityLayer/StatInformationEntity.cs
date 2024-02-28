@@ -11,7 +11,7 @@ namespace KBO_Dictionary.EntityLayer
     [Table("STAT_INFO")]
     public class StatInformationEntity
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column("id")]
+        [Key, Column("id")]
         public int Id { get; set; }
 
         [Column("games")]

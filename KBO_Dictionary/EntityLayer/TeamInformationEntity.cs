@@ -12,12 +12,14 @@ namespace KBO_Dictionary.EntityLayer
     public class TeamInformationEntity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
-        public int Id { get; set; }
+        public short Id { get; set; }
 
         [Column("name")]
         public string? Name { get; set; }
+
+        [Column("team_image")]
+        public byte[] TeamImage { get; set; }
 
         public ICollection<PlayerInformationEntity> Players { get; set; }
     }
