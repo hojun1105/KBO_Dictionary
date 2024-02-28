@@ -9,6 +9,7 @@ namespace KBO_Dictionary.BusinessLogicLayer
 {
     public interface ITeamInformationDao
     {
+        List<TeamInformationEntity> SelectAll();
         void Insert(TeamInformationEntity entity);
         void Update(TeamInformationEntity entity);
         void Delete(TeamInformationEntity entity);
