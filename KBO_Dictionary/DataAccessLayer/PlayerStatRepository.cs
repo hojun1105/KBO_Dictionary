@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KBO_Dictionary.EntityLayer;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Windows.Media.Imaging;
 
 namespace KBO_Dictionary.DataAccessLayer
 {
@@ -18,10 +20,11 @@ namespace KBO_Dictionary.DataAccessLayer
             if (_dbContext is not { PlayerInformation: not null, StatInformation: not null })
                 return new List<PlayerModel>();
             {
-                var playerInformationList = _dbContext.PlayerInformation.Join(_dbContext.StatInformation,
-                        playerInformation => playerInformation.Id, statInformation => statInformation.Id,
-                        (a, b) => new { playerInformation = a, statInformation = b })
-                    .Include(b => b.playerInformation.TeamInformation).ToList();
+                var playerInformationList = _dbContext.PlayerInformation.Include(a => a.TeamInformation)
+                    .Join(_dbContext.StatInformation, playerInformation => playerInformation.Id,
+                        statInformation => statInformation.Id,
+                        (a, b) => new { playerInformation = a, statInformation = b }).ToList();
+
                 return playerInformationList.Select(a => ToPlayerModel(a.playerInformation, a.statInformation))
                     .ToList();
             }
@@ -32,12 +35,15 @@ namespace KBO_Dictionary.DataAccessLayer
         {
             return new PlayerModel
             {
-                id = playerInformation.Id,
-                name = playerInformation.Name,
-                team = playerInformation.TeamInformation?.Name ?? string.Empty,
-                height = playerInformation.Height,
-                weight = playerInformation.Weight,
-                birth_date = playerInformation.BirthDate,
+                Id = playerInformation.Id,
+                Name = playerInformation.Name,
+                Team = playerInformation.TeamInformation?.Name ?? string.Empty,
+                TeamImage =
+                    TeamImageCacheService.Instance().GetBitmapImages()
+                        .Find(a => a.Id == playerInformation.TeamInformation.Id).Image,
+                Height = playerInformation.Height,
+                Weight = playerInformation.Weight,
+                BirthDate = playerInformation.BirthDate,
                 경기수 = statInformation.Games,
                 타석 = statInformation.AtBat,
                 타율 = statInformation.Average,
@@ -49,7 +55,7 @@ namespace KBO_Dictionary.DataAccessLayer
                 타점 = statInformation.RunsBattedIn,
                 장타율 = statInformation.SluggingPercentage,
                 출루율 = statInformation.OnBasePercentage,
-                ops = statInformation.OnBasePlusSlugging
+                Ops = statInformation.OnBasePlusSlugging
             };
         }
     }

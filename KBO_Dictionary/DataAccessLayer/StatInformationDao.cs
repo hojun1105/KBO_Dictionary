@@ -10,12 +10,14 @@ public class StatInformationDao : IStatInformationDao
 
     public void Insert(StatInformationEntity entity)
     {
-        _dbContext.StatInformation.Add(entity);
+        _dbContext.StatInformation?.Add(entity);
         _dbContext.SaveChanges();
     }
 
     public void Update(StatInformationEntity entity)
     {
+        if (_dbContext.StatInformation == null) return;
+
         var statInformation = _dbContext.StatInformation.Single(a => a.Id == entity.Id);
         statInformation.Games = entity.Games;
         statInformation.PlateAppearance = entity.PlateAppearance;
@@ -30,12 +32,13 @@ public class StatInformationDao : IStatInformationDao
         statInformation.OnBasePercentage = entity.OnBasePercentage;
         statInformation.OnBasePlusSlugging = entity.OnBasePlusSlugging;
         statInformation.Average = entity.Average;
+
         _dbContext.SaveChanges();
     }
 
     public void Delete(StatInformationEntity entity)
     {
-        _dbContext.StatInformation.Remove(entity);
+        _dbContext.StatInformation?.Remove(entity);
         _dbContext.SaveChanges();
     }
 }

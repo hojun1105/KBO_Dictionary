@@ -30,5 +30,3 @@ public class KboDbContext : DbContext
         base.OnConfiguring(optionsBuilder);
     }
 }
-
-
